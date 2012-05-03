@@ -71,12 +71,43 @@ public class HandTest {
 	public void isStraightShouldBeTrueForStraightHand(){
 		Hand hand=new Hand("2H 3D 4S 5C 6C");
 		assertTrue(hand.isStraight());
+                hand=new Hand("7H 6D 5S 4C 3C");
+		assertTrue(hand.isStraight());
+                hand=new Hand("AH 2D 5S 4C 3C");
+		assertTrue(hand.isStraight());
+                hand=new Hand("AH QD JS KC TC");
+		assertTrue(hand.isStraight());
 	}
 	
 	@Test
 	public void isStraightShouldBeFalseForHighCardHand(){
 		Hand hand=new Hand("7H 6D 2S 3C 4C");
 		assertFalse(hand.isStraight());
+
 	}
-	
+        
+        @Test 
+        public void isFlushHandShouldbeTrueForFlushHand() {
+            Hand hand=new Hand("7H 6H 2H 3H 4H");
+            assertTrue(hand.isFlush());
+        }
+        
+        @Test 
+        public void isFlushHandShouldbeFalseForNonFlushHand() {
+            Hand hand=new Hand("7H 6H 2H 3H 4C");
+            assertFalse(hand.isFlush());
+        }
+        @Test 
+        public void isStraightFlushHandShouldbeTrueForStraightFlushHand() {
+            Hand hand=new Hand("AH 2H 3H 4H 5H");
+            assertTrue(hand.isStraightFlush());
+        }
+        
+        @Test 
+        public void isStraightFlushHandShouldbeFalseForNonStraightFlushHand() {
+            Hand hand=new Hand("KH TH 9H JH QC");
+            assertFalse(hand.isStraightFlush());
+        }
+        
+        
 }
